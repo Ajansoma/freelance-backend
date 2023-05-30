@@ -29,6 +29,7 @@ app.use(morgan('combined'));
 app.use(express.json());
 app.use(cookieParser());
 // app.use(express.static(path.join('../client/dist')));
+//  app.use(express.static(path.join(`https://freelance-app.onrender.com`)));
 
 app.use('/auth', authRouter);
 // app.use(verifyToken);
@@ -46,9 +47,9 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-// app.get('/*', (req, res) => {
-//   // const indexPath = path.resolve('../client/dist/index.html');
-//   // res.sendFile(indexPath);
-// });
+app.get('/*', (req, res) => {
+  // const indexPath = path.resolve('../client/dist/index.html');
+  res.sendFile(`https://freelance-app.onrender.com`);
+});
 
 module.exports = app;
